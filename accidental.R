@@ -1,15 +1,12 @@
-# MET CS544 Final Project
-# Mary Lucas
-# December 2017
+# Need to add a preamble here
 
 # Import and prepare the data set
 
 # Ensure we're in the current working directory and import the dataset
-setwd("/Users/mary/Downloads")
+setwd("/Users/mary/Downloads")  # or wherever you locally save the CSV file
 raw.dataframe <- read.csv("Accidental_Drug_Related_Deaths__2012-June_2017.csv")
 
 # I have also uploaded this dataset to github:
-# https://github.com/marymlucas/cs544finalproject
 
 # Inspect the dataframe
 str(raw.dataframe)
