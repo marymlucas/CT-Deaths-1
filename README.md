@@ -2,3 +2,6 @@
 
 Just a small project I've been working on as I learn how to work with datasets in R.
 The dataset I'm using here contains data on accidental deaths by overdose gathered by the medical examiner in Connecticut.
+
+## To Do:
+- Update data
