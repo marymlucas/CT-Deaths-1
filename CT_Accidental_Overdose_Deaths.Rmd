@@ -1,0 +1,44 @@
+---
+title: "CT Drug Overdose Deaths"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Accidental Drug Overdose Deaths - Connecticut
+* Data provided by the Medical Examiners Office
+
+```{r}
+library(tidyverse)
+library(lubridate)
+theme_set(theme_minimal())
+od_death_data_raw = read_csv("DrugDeaths_2015-2019.csv") 
+
+od_death_data <- od_death_data_raw %>% 
+  mutate(DOD = mdy(DOD))
+
+od_death_data <- od_death_data %>%
+  mutate_if(is.character, as.factor)
+
+```
+
+```{r}
+od_death_data %>% count(Sex, sort = TRUE, name = "total_number") %>%
+  mutate(Sex = fct_reorder(Sex, total_number)) %>%
+  ggplot(aes(total_number, Sex)) + geom_col()
+```
+
+```{r}
+od_death_data %>% count(Race, sort = TRUE, name = "total_number") %>%
+  mutate(Race = fct_reorder(Race, total_number)) %>%
+  ggplot(aes(total_number, Race)) + geom_col()
+```
+
+```{r}
+od_death_data %>% count(`Death City`, sort = TRUE, name = "total_number") %>%
+  mutate(`Death City` = fct_reorder(`Death City`, total_number)) %>% 
+  head(., 10) %>%
+  ggplot(aes(total_number, `Death City`)) + geom_col()
+```
